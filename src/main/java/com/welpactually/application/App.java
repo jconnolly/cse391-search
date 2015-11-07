@@ -46,6 +46,6 @@ public class App extends Application<SearchConfiguration>
 
     //FIXME: read this from config
     public SolrClient getSolrConnection() {
-        return new HttpSolrClient("http://solr0.local:8983/solr/wiki");
+        return new HttpSolrClient("http://solr0.local:8983/solr/fullsearch");
     }
 }
