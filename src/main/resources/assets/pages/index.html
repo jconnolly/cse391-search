@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
           crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
-            integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
-            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+          integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
+          crossorigin="anonymous"></script>
+    <script src="../js/search.js"></script>
+    
 </head>
 <body>
 <div class="centered">
 
+    <!--The search form -->
     <div class="col-lg-6">
         <div class="input-group">
-            <form action="/API/search">
-                <input type="text" class="form-control" placeholder="Search for..." name="q" value="">
+            <form id="search-form" action="/API/search" class="form-inline form-horizontal">
+                <input type="text" id="search-box" class="form-control" placeholder="Search for..." name="q" value="">
                 <span class="input-group-btn">
-                     <button class="btn btn-default" type="submit">Go!</button>
+                     <button id="go-button" class="btn btn-default" type="submit">Go!</button>
                 </span>
             </form>
         </div>
     </div>
     <!-- /.col-lg-6 -->
+    
+    <!--Show results -->
+    
 </div>
 </body>
 </html>

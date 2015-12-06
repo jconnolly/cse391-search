@@ -3,5 +3,13 @@
 <head>
 </head>
 <body>
+    {{#results}}
+        <div class="search-results">
+            <h3 class="page-name">{{pageName}}</h3>
+            <a class="page-url" href="{{pageUrl}}"></a>
+            <p class="pageSnippet">{{pageSnippet}}</p>
+        </div>
+
+    {{/results}}
 </body>
 </html>
