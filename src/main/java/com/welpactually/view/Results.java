@@ -14,7 +14,6 @@ public class Results extends View {
         super("results.mustache");
     }
 
-
     public Results(SolrDocumentList results) {
         super("results.mustache");
         this.results = results.iterator();
