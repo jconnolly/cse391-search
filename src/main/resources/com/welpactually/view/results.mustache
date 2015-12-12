@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>{{query}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <script src="/assets/js/search.js"></script>
 </head>
 <body>
-{{#results}}
-    <div class="search-results">
-        <h3 class="page-name">{{pageName}}</h3>
-        <a class="page-url" href="{{pageUrl}}"></a>
-        <p class="pageSnippet">{{pageSnippet}}</p>
+<div class="header">
+    <h1>Search: {{query}}</h1>
+    <div class="col-lg-6">
+        <div class="input-group">
+            <form id="search-form" action="/API/search" class="form-inline form-horizontal">
+                <input type="text" id="search-box" class="form-control" placeholder="Search for..." name="q" value="">
+                <span class="input-group-btn">
+                     <button id="go-button" class="btn btn-default" type="submit">Go!</button>
+                </span>
+            </form>
+        </div>
     </div>
-
-{{/results}}
+</div>
+<hr />
+<div>
+    <ul class="list-group">
+        {{#results}}
+            <li class="list-group-item">
+                <h3><a href="{{{title}}}">{{{title}}}</a></h3>
+                <div>
+                    {{{highlight}}}
+                </div>
+            </li>
+        {{/results}}
+    </ul>
+</div>
 </body>
 </html>

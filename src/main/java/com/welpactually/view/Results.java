@@ -1,25 +1,28 @@
 package com.welpactually.view;
 
 import io.dropwizard.views.View;
-import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrDocumentList;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Results extends View {
 
-    private Iterator<SolrDocument> results;
+    private String query;
 
-    public Results() {
+
+    private List results;
+
+    public Results(String query, ArrayList results) {
         super("results.mustache");
+        this.query = query;
+        this.results = results;
     }
 
-    public Results(SolrDocumentList results) {
-        super("results.mustache");
-        this.results = results.iterator();
+    public String getQuery() {
+        return query;
     }
 
-    public Iterator<SolrDocument> getResults(){
+    public List getResults() {
         return results;
     }
 }
