@@ -28,7 +28,9 @@ public class App extends Application<SearchConfiguration>
 
     @Override
     public void initialize(Bootstrap<SearchConfiguration> bootstrap) {
-        bootstrap.addBundle(new AssetsBundle("/assets/pages", "/", "index.html", "html"));
+        bootstrap.addBundle(new AssetsBundle("/assets/pages", "/", "index.html", "index"));
+        bootstrap.addBundle(new AssetsBundle("/assets/js", "/js", null, "js"));
+        bootstrap.addBundle(new AssetsBundle("/assets/css", "/css", null, "css"));
         bootstrap.addBundle(new ViewBundle());
 
     }
