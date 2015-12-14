@@ -6,18 +6,19 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.SuggesterResponse;
+import org.apache.solr.client.solrj.response.Suggestion;
 import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Path("/")
 public class Search {
@@ -32,13 +33,19 @@ public class Search {
     }
 
     @GET
-    @Path("/search")
-    @Produces(MediaType.TEXT_HTML)
-    public Response search(@QueryParam("q") String q) throws IOException, SolrServerException {
-        SolrQuery query = new SolrQuery(q);
-        QueryResponse result = solrClient.query(query);
-        logger.info(result.toString());
-        return Response.ok(mapper.writeValueAsString(result.getResults())).build();
+    @Path("/autocomplete")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response search(@QueryParam("query") String query) throws IOException, SolrServerException {
+        SolrQuery q = new SolrQuery(query);
+        q.setRequestHandler("/suggest");
+        QueryResponse result = solrClient.query(q);
+        List<String> terms = result.getSuggesterResponse()
+                .getSuggestions()
+                .get("mySuggester").stream().map(s->s.getTerm()).collect(Collectors.toList());
+
+        HashMap<String, List> response = new HashMap<>();
+        response.put("suggestions", terms);
+        return Response.ok(mapper.writeValueAsString(response)).build();
     }
 
     @GET
@@ -48,7 +55,7 @@ public class Search {
         SolrQuery query = new SolrQuery();
         logger.info("Query: " + q);
         query.setQuery(q);
-        query.setHighlight(true).setHighlightSnippets(1); //set other params as needed
+        query.setHighlight(true).setHighlightSnippets(1);
         query.setHighlightSimplePre("<em>");
         query.setHighlightSimplePost("</em>");
         query.setParam("hl.fl", "content");

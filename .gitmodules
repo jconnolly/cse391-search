@@ -1,0 +1,3 @@
+[submodule "src/main/resources/assets/js/jquery-autocomplete"]
+	path = src/main/resources/assets/js/jquery-autocomplete
+	url = git@github.com:devbridge/jQuery-Autocomplete.git

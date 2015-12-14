@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
           integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
           crossorigin="anonymous"></script>
+    <script src="/js/jquery-autocomplete/src/jquery.autocomplete.js"></script>
     <script src="/js/search.js"></script>
     
 </head>
@@ -19,17 +20,13 @@
     <div class="col-lg-6">
         <div class="input-group">
             <form id="search-form" action="/API/results" class="form-inline form-horizontal">
-                <input type="text" id="search-box" class="form-control" placeholder="Search for..." name="q" value="">
+                <input type="text" class="form-control" placeholder="Search for..." name="q" id="autocomplete" value="">
                 <span class="input-group-btn">
                      <button id="go-button" class="btn btn-default" type="submit">Go!</button>
                 </span>
             </form>
         </div>
     </div>
-    <!-- /.col-lg-6 -->
-    
-    <!--Show results -->
-    
 </div>
 </body>
 </html>
