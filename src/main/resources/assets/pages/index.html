@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
           crossorigin="anonymous">
+    <link href="/js/jquery-autocomplete/content/styles.css" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
           integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
           crossorigin="anonymous"></script>
@@ -14,17 +14,18 @@
     
 </head>
 <body>
-<div class="centered">
-
-    <!--The search form -->
-    <div class="col-lg-6">
-        <div class="input-group">
-            <form id="search-form" action="/API/results" class="form-inline form-horizontal">
-                <input type="text" class="form-control" placeholder="Search for..." name="q" id="autocomplete" value="">
-                <span class="input-group-btn">
-                     <button id="go-button" class="btn btn-default" type="submit">Go!</button>
-                </span>
-            </form>
+<div class="container">
+    <div class="row">
+        <div class="absolute-center is-responsive">
+            <div id="logo-container"></div>
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <form action="/API/results" id="search-form">
+                    <div class="form-group input-group">
+                        <input class="form-control" type="text" name='q' placeholder="Search for..." id="autocomplete"/>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
